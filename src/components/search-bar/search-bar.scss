@@ -1,0 +1,168 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.search-bar-wrapper {
+  position: relative;
+  margin-bottom: $spacing-lg;
+}
+
+.search-bar {
+  display: flex;
+  gap: $spacing-md;
+
+  &__input {
+    flex: 1;
+    padding: $spacing-md;
+    background: $color-background-glass;
+    border: none;
+    border-radius: 12px;
+    font-size: $font-size-base;
+    color: $color-text;
+    backdrop-filter: blur(10px);
+    transition: $transition-base;
+
+    [data-theme="dark"] & {
+      background: $color-background-glass-dark;
+      color: $color-text-dark;
+    }
+
+    &::placeholder {
+      color: $color-text-secondary;
+
+      [data-theme="dark"] & {
+        color: $color-text-secondary-dark;
+      }
+    }
+
+    &:focus {
+      outline: none;
+      background: rgba($color-card-light, 0.95);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+      [data-theme="dark"] & {
+        background: rgba($color-card-dark, 0.9);
+      }
+    }
+  }
+
+  &__button {
+    width: 56px;
+    height: 56px;
+    @include flex-center;
+    background: $color-primary;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: $transition-base;
+
+    [data-theme="dark"] & {
+      background: $color-primary-dark;
+    }
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+    }
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+    color: $color-white;
+  }
+
+  &__suggestions {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 56px + $spacing-md;
+    margin-top: $spacing-xs;
+    background: $color-card-light;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+
+    [data-theme="dark"] & {
+      background: rgba($color-card-dark, 0.95);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    }
+
+    @include responsive(tablet) {
+      right: 56px + $spacing-lg;
+    }
+  }
+
+  &__suggestion {
+    padding: $spacing-md;
+    cursor: pointer;
+    transition: $transition-base;
+    border-bottom: 1px solid $color-border;
+
+    [data-theme="dark"] & {
+      border-bottom-color: rgba($color-white, 0.1);
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: rgba($color-primary, 0.05);
+
+      [data-theme="dark"] & {
+        background: rgba($color-primary, 0.15);
+      }
+    }
+
+    &--loading {
+      text-align: center;
+      color: $color-text-secondary;
+      cursor: default;
+
+      &:hover {
+        background: transparent;
+      }
+    }
+  }
+
+  &__suggestion-name {
+    display: block;
+    font-weight: $font-weight-medium;
+    color: $color-text;
+    margin-bottom: $spacing-xs;
+
+    [data-theme="dark"] & {
+      color: $color-text-dark;
+    }
+  }
+
+  &__suggestion-details {
+    display: block;
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+
+    [data-theme="dark"] & {
+      color: $color-text-secondary-dark;
+    }
+  }
+
+  @include responsive(tablet) {
+    gap: $spacing-lg;
+
+    &__input {
+      padding: $spacing-md $spacing-lg;
+      font-size: $font-size-lg;
+    }
+  }
+}

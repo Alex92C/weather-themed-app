@@ -1,0 +1,244 @@
+@use "./variables";
+
+// Mixins
+@mixin responsive($breakpoint) {
+  @if $breakpoint == mobile-lg {
+    @media (min-width: 480px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (min-width: 1024px) {
+      @content;
+    }
+  } @else if $breakpoint == wide {
+    @media (min-width: 1280px) {
+      @content;
+    }
+  }
+}
+
+@mixin focus-outline {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.1);
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition: var(--transition-base);
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  &:focus {
+    @include focus-outline;
+  }
+}
+
+@mixin input-base {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: var(--font-size-sm);
+  transition: var(--transition-base);
+  color: var(--color-text-secondary);
+  background-color: var(--color-background);
+
+  &:focus {
+    border-color: var(--color-primary);
+    @include focus-outline;
+  }
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
+
+  &:disabled {
+    background-color: var(--color-background-hover);
+    cursor: not-allowed;
+  }
+
+  &[type="select"],
+  &:not([type]) {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.7rem top 50%;
+    background-size: 0.65rem auto;
+    padding-right: 2.5rem;
+
+    &:focus {
+      border-color: var(--color-primary);
+      @include focus-outline;
+    }
+  }
+
+  &[type="date"] {
+    &::-webkit-calendar-picker-indicator {
+      // Convert your color to a filter to change the color of the calendar icon
+      filter: invert(39%) sepia(95%) saturate(1640%) hue-rotate(201deg)
+        brightness(99%) contrast(94%);
+      width: 20px;
+      height: 20px;
+      margin-left: 8px;
+      padding: 0;
+      opacity: 0.7;
+      cursor: pointer;
+      transition: opacity var(--transition-base);
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+// Animation Mixins
+@mixin fade-in {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  animation: fadeIn 0.3s ease-in;
+}
+
+@mixin slide-in {
+  @keyframes slideIn {
+    from {
+      transform: translateY(-10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  animation: slideIn 0.3s ease-out;
+}
+
+@mixin scale-in {
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  animation: scaleIn 0.3s ease-out;
+}
+
+// Grid Mixins
+@mixin grid-base {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+@mixin grid-columns($columns) {
+  grid-template-columns: repeat($columns, 1fr);
+}
+
+@mixin grid-auto-fit($min-width) {
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+}
+
+// Card Mixins
+@mixin card-base {
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-base);
+  padding: var(--spacing-md);
+  transition: var(--transition-base);
+
+  &:hover {
+    box-shadow: var(--shadow-md);
+  }
+}
+
+// Typography Mixins
+@mixin heading-base {
+  margin: 0;
+  line-height: var(--line-height-tight);
+  color: var(--color-text);
+}
+
+@mixin text-base {
+  margin: 0;
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+}
+
+// Icon Mixins
+@mixin icon-base {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Form Field Mixins
+@mixin form-field {
+  margin-bottom: var(--spacing-md);
+
+  &__label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text);
+  }
+
+  &__input {
+    @include input-base;
+  }
+
+  &__error {
+    margin-top: var(--spacing-xs);
+    color: var(--color-error);
+    font-size: var(--font-size-sm);
+  }
+}
+
+// Status Badge Mixins
+@mixin status-badge($color) {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  background-color: rgba($color, 0.1);
+  color: $color;
+}

@@ -1,0 +1,250 @@
+@use "./variables";
+@use "./mixins" as mixins;
+@use "./utilities";
+
+// Reset and base styles
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-text);
+  background-color: var(--color-background);
+}
+
+// Common element styles
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: var(--transition-base);
+
+  &:hover {
+    color: var(--color-primary-dark);
+  }
+}
+
+button {
+  @include mixins.button-base;
+}
+
+input,
+textarea,
+select {
+  @include mixins.input-base;
+}
+
+// Common component styles
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+
+  @include mixins.responsive(tablet) {
+    padding: 0 var(--spacing-lg);
+  }
+
+  @include mixins.responsive(desktop) {
+    padding: 0 var(--spacing-xl);
+  }
+}
+
+.card {
+  @include mixins.card-base;
+}
+
+.btn {
+  @include mixins.button-base;
+
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  &--secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-secondary-dark);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    border: 1px solid currentColor;
+
+    &.btn--primary {
+      color: var(--color-primary);
+
+      &:hover:not(:disabled) {
+        background-color: var(--color-primary);
+        color: var(--color-white);
+      }
+    }
+
+    &.btn--secondary {
+      color: var(--color-secondary);
+
+      &:hover:not(:disabled) {
+        background-color: var(--color-secondary);
+        color: var(--color-white);
+      }
+    }
+  }
+}
+
+// Form styles
+.form-group {
+  @include mixins.form-field;
+}
+
+// Alert styles
+.alert {
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--spacing-md);
+
+  &--success {
+    background-color: rgba(var(--color-success), 0.1);
+    color: var(--color-success);
+    border: 1px solid var(--color-success);
+  }
+
+  &--error {
+    background-color: rgba(var(--color-error), 0.1);
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+  }
+
+  &--warning {
+    background-color: rgba(var(--color-warning), 0.1);
+    color: var(--color-warning);
+    border: 1px solid var(--color-warning);
+  }
+
+  &--info {
+    background-color: rgba(var(--color-info), 0.1);
+    color: var(--color-info);
+    border: 1px solid var(--color-info);
+  }
+}
+
+// Loading states
+.loading {
+  @include mixins.flex-center;
+  min-height: 200px;
+
+  &::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--color-border);
+    border-top-color: var(--color-primary);
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Responsive grid system
+.grid {
+  @include mixins.grid-base;
+
+  &--2-cols {
+    @include mixins.grid-columns(1);
+
+    @include mixins.responsive(tablet) {
+      @include mixins.grid-columns(2);
+    }
+  }
+
+  &--3-cols {
+    @include mixins.grid-columns(1);
+
+    @include mixins.responsive(tablet) {
+      @include mixins.grid-columns(2);
+    }
+
+    @include mixins.responsive(desktop) {
+      @include mixins.grid-columns(3);
+    }
+  }
+
+  &--4-cols {
+    @include mixins.grid-columns(1);
+
+    @include mixins.responsive(tablet) {
+      @include mixins.grid-columns(2);
+    }
+
+    @include mixins.responsive(desktop) {
+      @include mixins.grid-columns(4);
+    }
+  }
+
+  &--auto-fit {
+    @include mixins.grid-auto-fit(250px);
+  }
+}
+
+// Z-index management
+.z-index {
+  &-dropdown {
+    z-index: var(--z-index-dropdown);
+  }
+  &-sticky {
+    z-index: var(--z-index-sticky);
+  }
+  &-fixed {
+    z-index: var(--z-index-fixed);
+  }
+  &-modal-backdrop {
+    z-index: var(--z-index-modal-backdrop);
+  }
+  &-modal {
+    z-index: var(--z-index-modal);
+  }
+  &-popover {
+    z-index: var(--z-index-popover);
+  }
+  &-tooltip {
+    z-index: var(--z-index-tooltip);
+  }
+}
+
+// Print styles
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+
+  body {
+    background: var(--color-white);
+  }
+}

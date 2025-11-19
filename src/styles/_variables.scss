@@ -1,0 +1,138 @@
+// Colors
+$color-primary: #6c40b5;
+$color-primary-dark: #28124d;
+$color-secondary: #6c757d;
+$color-secondary-dark: #565e64;
+$color-success: #28a745;
+$color-error: #dc3545;
+
+// Text colors
+$color-text: #3d3d41;
+$color-text-secondary: #718096;
+$color-text-dark: #ffffff;
+$color-text-secondary-dark: #a0aec0;
+
+// Background colors
+$color-background: #ffffff;
+$color-background-glass: rgba(255, 255, 255, 0.2);
+$color-background-dark: #1a1a2e;
+$color-background-glass-dark: rgba(26, 26, 26, 0.3);
+$color-card-light: #ffffff;
+$color-card-dark: #3d3d41;
+
+// Border colors
+$color-border: #e2e8f0;
+$color-border-dark: #cbd5e0;
+$color-border-glass: rgba(255, 255, 255, 0.5);
+$color-border-glass-dark: rgba(26, 26, 26, 0.3);
+
+// Border radius
+$border-radius-sm: 8px;
+$border-radius-md: 16px;
+$border-radius-lg: 24px;
+
+// Utility colors
+$color-white: #fff;
+$color-black: #000;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Typography
+$font-family-base: "Arial", sans-serif;
+$line-height-base: 1.5;
+
+// Font sizes
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-xxl: 24px;
+
+// Font weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+// Transitions
+$transition-base: 0.5s ease;
+
+:root {
+  // Main colors
+  --color-primary: #{$color-primary};
+  --color-primary-dark: #{$color-primary-dark};
+  --color-primary-rgb: 108, 64, 181; // RGB values for primary color
+  --color-secondary: #{$color-secondary};
+  --color-secondary-dark: #{$color-secondary-dark};
+  --color-success: #{$color-success};
+  --color-error: #{$color-error};
+
+  // Text colors
+  --color-text: #{$color-text};
+  --color-text-secondary: #{$color-text-secondary};
+
+  // Background colors
+  --color-background: #{$color-background};
+  --color-background-glass: #{$color-background-glass};
+
+  // Border colors
+  --color-border: #{$color-border};
+  --color-border-dark: #{$color-border-dark};
+
+  // Utility colors
+  --color-white: #{$color-white};
+  --color-black: #{$color-black};
+
+  // Spacing
+  --spacing-xs: #{$spacing-xs};
+  --spacing-sm: #{$spacing-sm};
+  --spacing-md: #{$spacing-md};
+  --spacing-lg: #{$spacing-lg};
+  --spacing-xl: #{$spacing-xl};
+
+  // Typography
+  --font-family-base: #{$font-family-base};
+  --line-height-base: #{$line-height-base};
+
+  // Font sizes
+  --font-size-xs: #{$font-size-xs};
+  --font-size-sm: #{$font-size-sm};
+  --font-size-base: #{$font-size-base};
+  --font-size-lg: #{$font-size-lg};
+  --font-size-xl: #{$font-size-xl};
+  --font-size-xxl: #{$font-size-xxl};
+
+  // Font weights
+  --font-weight-light: #{$font-weight-light};
+  --font-weight-normal: #{$font-weight-normal};
+  --font-weight-medium: #{$font-weight-medium};
+  --font-weight-semibold: #{$font-weight-semibold};
+  --font-weight-bold: #{$font-weight-bold};
+
+  // Transitions
+  --transition-base: #{$transition-base};
+}
+
+[data-theme="dark"] {
+  // Main colors
+  --color-primary: #{$color-primary-dark};
+  --color-secondary: #{$color-secondary-dark};
+
+  // Text colors
+  --color-text: #{$color-text-dark};
+  --color-text-secondary: #{$color-text-secondary-dark};
+
+  // Background colors
+  --color-background: #{$color-background-dark};
+  --color-background-glass: #{$color-background-glass-dark};
+
+  // Border colors
+  --color-border-glass: #{$color-border-glass-dark};
+}

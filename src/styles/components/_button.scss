@@ -1,0 +1,56 @@
+// This is just for explication purposes.
+// Global styles related to specific widely reused components (buttons, forms, tabs, chips, etc..) components should be in their respective component SCSS files, and exported via the components index file to be used globally.
+
+@use "../variables";
+
+.btn {
+  display: flex;
+  align-items: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+
+  & svg {
+    margin-right: 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  &:hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.btn--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+
+  &:hover {
+    background-color: var(--color-primary-dark);
+  }
+}
+
+.btn--secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+
+  &:hover {
+    background-color: var(--color-secondary-dark);
+  }
+}
+
+.btn--danger {
+  background-color: var(--color-danger);
+  color: var(--color-white);
+
+  &:hover {
+    background-color: var(--color-danger-dark);
+  }
+}

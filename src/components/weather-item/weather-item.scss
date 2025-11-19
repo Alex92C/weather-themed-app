@@ -1,0 +1,118 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.weather-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: $spacing-md;
+  min-height: 60px;
+  padding: $spacing-sm $spacing-md;
+  background: rgba($color-card-light, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: $border-radius-md;
+  margin-bottom: $spacing-md;
+  transition: $transition-base;
+
+  [data-theme="dark"] & {
+    background: rgba($color-card-dark, 0.5);
+  }
+
+  &:hover {
+    background: rgba($color-card-light, 0.8);
+
+    [data-theme="dark"] & {
+      background: rgba($color-card-dark, 0.7);
+    }
+
+    transform: translateX(4px);
+  }
+
+  &__left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: $spacing-xs;
+  }
+
+  &__city {
+    font-size: $font-size-base;
+    font-weight: $font-weight-medium;
+    color: $color-text;
+
+    [data-theme="dark"] & {
+      color: $color-text-dark;
+    }
+  }
+
+  &__date {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+
+    [data-theme="dark"] & {
+      color: $color-text-secondary-dark;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+
+  &__button {
+    @include flex-center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: $transition-base;
+    background: $color-card-light;
+    color: $color-secondary;
+
+    [data-theme="dark"] & {
+      background: rgba($color-card-dark, 0.9);
+      color: $color-white;
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba($color-secondary, 0.2);
+    }
+
+    &:hover {
+      background: darken($color-card-light, 5%);
+      transform: scale(1.1);
+
+      [data-theme="dark"] & {
+        background: rgba($color-card-dark, 1);
+      }
+    }
+  }
+
+  @include responsive(tablet) {
+    height: 60px;
+
+    &__left {
+      flex-direction: row;
+      align-items: center;
+      gap: $spacing-md;
+    }
+
+    &__city {
+      font-size: $font-size-lg;
+    }
+
+    &__date {
+      font-size: $font-size-base;
+      order: 2;
+    }
+  }
+}

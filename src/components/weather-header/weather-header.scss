@@ -1,0 +1,117 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.weather-header {
+  position: relative;
+  border-radius: 24px;
+  padding: $spacing-lg;
+  font-size: $font-size-base;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__left {
+    flex: 1;
+  }
+
+  &__label {
+    font-size: $font-size-sm;
+    color: $color-text-secondary;
+    margin: 0 0 $spacing-xs 0;
+    font-weight: $font-weight-normal;
+
+    [data-theme="dark"] & {
+      color: $color-text-secondary-dark;
+    }
+  }
+
+  &__temperature {
+    font-size: 80px;
+    font-weight: $font-weight-bold;
+    color: $color-primary;
+    margin: 0;
+    line-height: 1;
+    margin-bottom: $spacing-sm;
+
+    [data-theme="dark"] & {
+      color: $color-text-dark;
+    }
+  }
+
+  &__range {
+    font-weight: $font-weight-semibold;
+    color: $color-text;
+    margin: 0 0 $spacing-sm 0;
+
+    [data-theme="dark"] & {
+      color: $color-text-dark;
+    }
+  }
+
+  &__sub-header {
+    display: flex;
+    color: $color-text-secondary;
+
+    [data-theme="dark"] & {
+      color: $color-text-secondary-dark;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    flex: 1;
+    font-size: $font-size-base;
+    margin-top: -48px;
+  }
+
+  &__location {
+    font-weight: $font-weight-semibold;
+    margin-right: 10%;
+  }
+
+  &__right {
+    flex-shrink: 0;
+  }
+
+  &__icon {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    right: -40px;
+    bottom: 100px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+  }
+
+  @include responsive(tablet) {
+    &__temperature {
+      font-size: 120px;
+    }
+
+    &__icon {
+      width: 240px;
+      height: 240px;
+      right: -8px;
+      bottom: 116px;
+    }
+  }
+
+  @include responsive(desktop) {
+    &__details {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      margin-top: 0px;
+    }
+
+    &__icon {
+      width: 260px;
+      height: 260px;
+      bottom: 100px;
+    }
+  }
+}
