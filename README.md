@@ -1,16 +1,51 @@
-# React + Vite
+# ☀️ React Weather App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive weather application built with **React** and bundled using **Vite**. This app fetches real-time weather data from the [OpenWeatherMap API](https://openweathermap.org/api) to display the current weather conditions for a specified location.
 
-Currently, two official plugins are available:
+## 🔗 Repository
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can find the source code for this project here:
+[https://github.com/Alex92C/weather-themed-app.git](https://github.com/Alex92C/weather-themed-app.git)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+* **Current Weather Display:** Get up-to-date weather information, including temperature, conditions, and humidity.
+* **API Integration:** Uses the **OpenWeatherMap API** to ensure accurate data.
+* **Theming:** Includes a functional **Light/Dark theme toggle** for a personalized viewing experience.
+* **Styling:** Styled professionally using **SASS** for maintainable and scalable CSS.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ Technology Stack
+
+* **Frontend Framework:** React (with Hooks and functional components)
+* **Build Tool:** Vite
+* **Styling:** SASS (Syntactically Awesome Style Sheets)
+* **Data Source:** OpenWeatherMap API
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to set up and run the project locally.
+
+### Prerequisites
+
+You need to have **Node.js** and **npm** (Node Package Manager) installed on your system.
+
+### 1. Installation
+
+Clone the repository and install the necessary dependencies:
+
+```bash
+# Clone the repository
+git clone [https://github.com/Alex92C/weather-themed-app.git](https://github.com/Alex92C/weather-themed-app.git)
+cd weather-themed-app
+
+# Install all project dependencies
+npm install
+
+# Start the development server
+npm run dev
