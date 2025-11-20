@@ -40,6 +40,7 @@ const Home = () => {
       // Add to beginning of history and limit to 10 items
       setSearchHistory((prev) => [historyItem, ...prev].slice(0, 10));
     } catch (err) {
+      setCurrentWeather(null);
       setError("Failed to fetch weather data. Please try again.");
       console.error(err);
     } finally {
